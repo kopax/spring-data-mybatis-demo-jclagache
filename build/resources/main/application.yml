@@ -1,6 +1,12 @@
 server:
   port: 8090
 
+mybatis:
+  mapper:
+    base:
+      package: com.repository
+  aliases:
+    package: com.domain
 #TODO: figure out why I need this here and in bootstrap.yml
 spring:
   application:

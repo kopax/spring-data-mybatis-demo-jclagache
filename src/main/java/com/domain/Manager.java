@@ -6,13 +6,12 @@ public class Manager {
 
 	private Integer id;
 	private String login;
-	private List<Role> roleList;
+
 
 	protected Manager() {}
 
 	public Manager(String login, List<Role> roleList) {
 		setLogin(login);
-		setRoleList(roleList);
 	}
 
 	public Integer getId() {
@@ -31,12 +30,6 @@ public class Manager {
 		this.login = login;
 	}
 
-	public List<Role> getRoleList() {
-		return roleList;
-	}
 
-	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
-	}
 
 }

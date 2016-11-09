@@ -30,6 +30,7 @@ public class Application {
 
     @RequestMapping("/manager")
     public ResponseEntity<List<Manager>> dataSource(){
+        Manager manager = managerRepository.findOne(1);
         List<Manager> managerList = managerRepository.findAll();
         return new ResponseEntity<List<Manager>>(managerList, HttpStatus.OK);
     }
