@@ -18,33 +18,33 @@ public class ManagerServiceImpl implements ManagerService {
 	@Autowired
 	private ManagerMapper managerMapper;
 
-//	public Manager save(Manager manager) {
-//		if (null == manager.getId()) {
-//			managerMapper.save(manager);
-//			return manager;
-//		} else {
-//			managerMapper.update(manager);
-//			return manager;
-//		}
-//	}
-//
-//	public Manager findOne(Integer id) {
-//		return managerMapper.findOne(id);
-//	}
-//
+	public Manager save(Manager manager) {
+		if (null == manager.getId()) {
+			managerMapper.save(manager);
+			return manager;
+		} else {
+			managerMapper.update(manager);
+			return manager;
+		}
+	}
+
+	public Manager findOne(Integer id) {
+		return managerMapper.findOne(id);
+	}
+
 	public List<Manager> findAll() {
 		return managerMapper.findAll();
 	}
-//
-//	public Long count() {
-//		return managerMapper.count();
-//	}
-//
-//	public void delete(Manager manager) {
-//		managerMapper.delete(manager);
-//	}
-//
-//	public Boolean exists(Integer id) {
-//		return managerMapper.exists(id);
-//	}
+
+	public Long count() {
+		return managerMapper.count();
+	}
+
+	public void delete(Manager manager) {
+		managerMapper.delete(manager);
+	}
+
+	public Boolean exists(Integer id) {
+		return managerMapper.exists(id);
+	}
 }

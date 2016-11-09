@@ -21,56 +21,56 @@
         `MANAGER` manager
     </sql>
 
-    <!--<select id="count" resultType="java.lang.Long" parameterType="Integer">-->
-        <!--SELECT COUNT(ID)-->
-        <!--<include refid="getManagerFrom"/>-->
-    <!--</select>-->
+    <select id="count" resultType="java.lang.Long" parameterType="Integer">
+        SELECT COUNT(ID)
+        <include refid="getManagerFrom"/>
+    </select>
 
-    <!--<select id="exists" resultType="java.lang.Boolean" parameterType="Integer">-->
-        <!--SELECT COUNT(ID)-->
-        <!--<include refid="getManagerFrom"/>-->
-        <!--WHERE-->
-        <!--ID = #{id};-->
-    <!--</select>-->
+    <select id="exists" resultType="java.lang.Boolean" parameterType="Integer">
+        SELECT COUNT(ID)
+        <include refid="getManagerFrom"/>
+        WHERE
+        ID = #{id};
+    </select>
 
 
-    <!--<select id="findOne" resultType="com.domain.Manager" parameterType="Integer">-->
-        <!--<include refid="getManagerSelect"/>-->
-        <!--<include refid="getManagerFrom"/>-->
-        <!--WHERE-->
-        <!--manager.`ID` = #{id}-->
-    <!--</select>-->
+    <select id="findOne" resultType="com.domain.Manager" parameterType="Integer">
+        <include refid="getManagerSelect"/>
+        <include refid="getManagerFrom"/>
+        WHERE
+        manager.`ID` = #{id}
+    </select>
 
     <select id="findAll" resultType="com.domain.Manager">
         <include refid="getManagerSelect"/>
         <include refid="getManagerFrom"/>
     </select>
 
-    <!--<insert id="save" parameterType="com.domain.Manager" useGeneratedKeys="true" keyProperty="id" keyColumn="ID">-->
-        <!--INSERT INTO `MANAGER`-->
-        <!--(`LOGIN`, `ROLES`)-->
-        <!--VALUES-->
-        <!--(#{login}, #{roleList})-->
-        <!--<selectKey keyProperty="id" resultType="Integer" order="AFTER">-->
-            <!--SELECT LAST_INSERT_ID();-->
-        <!--</selectKey>-->
-    <!--</insert>-->
+    <insert id="save" parameterType="com.domain.Manager" useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+        INSERT INTO `MANAGER`
+        (`LOGIN`, `ROLES`)
+        VALUES
+        (#{login}, #{roleList})
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+    </insert>
 
-    <!--<update id="update" parameterType="com.domain.Manager">-->
-        <!--UPDATE-->
-        <!--`MANAGER`-->
-        <!--SET-->
-        <!--`LOGIN` = #{login},-->
-        <!--`ROLES` = #{roleList}-->
-        <!--WHERE-->
-        <!--`ID` = #{id}-->
-    <!--</update>-->
+    <update id="update" parameterType="com.domain.Manager">
+        UPDATE
+        `MANAGER`
+        SET
+        `LOGIN` = #{login},
+        `ROLES` = #{roleList}
+        WHERE
+        `ID` = #{id}
+    </update>
 
-    <!--<delete id="delete" parameterType="com.domain.Manager">-->
-        <!--DELETE FROM-->
-        <!--`MANAGER`-->
-        <!--WHERE-->
-        <!--`ID` = #{id}-->
-    <!--</delete>-->
+    <delete id="delete" parameterType="com.domain.Manager">
+        DELETE FROM
+        `MANAGER`
+        WHERE
+        `ID` = #{id}
+    </delete>
 
 </mapper>
