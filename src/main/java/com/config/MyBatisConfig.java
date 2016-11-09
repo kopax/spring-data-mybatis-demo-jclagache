@@ -1,11 +1,17 @@
 package com.config;
 
-import me.jclagache.data.mybatis.repository.config.EnableMyBatisRepositories;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableMyBatisRepositories
 public class MyBatisConfig {
+//
+//	@Bean
+//	public MyBatisRepositoryFactoryBean entityManagerFactory() {
+//		MyBatisRepositoryFactoryBean factory = new MyBatisRepositoryFactoryBean();
+//		factory.setRepositoryInterface(MyBatisRepository.class);
+//		return factory;
+//	}
+
 //
 //	private static final Logger logger = LoggerFactory.getLogger(MyBatisConfig.class);
 //

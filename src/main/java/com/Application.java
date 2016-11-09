@@ -2,6 +2,7 @@ package com;
 
 import com.domain.Manager;
 import com.repository.ManagerRepository;
+import me.jclagache.data.mybatis.repository.config.EnableMyBatisRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @SpringBootApplication
+@EnableMyBatisRepositories
 @RestController
 public class Application {
 

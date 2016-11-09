@@ -1,16 +1,13 @@
 package com.domain;
 
-import java.util.List;
-
 public class Manager {
 
 	private Integer id;
 	private String login;
 
-
 	protected Manager() {}
 
-	public Manager(String login, List<Role> roleList) {
+	public Manager(String login) {
 		setLogin(login);
 	}
 
@@ -29,7 +26,5 @@ public class Manager {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
-
 
 }
