@@ -2,6 +2,7 @@ package com.config;
 
 import com.domain.Manager;
 import com.domain.Role;
+import me.jclagache.data.mybatis.repository.config.EnableMyBatisRepositories;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandler;
 import org.joda.time.DateTime;
@@ -19,7 +20,8 @@ import com.typeHandler.RoleListTypeHandler;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("com.persistence")
+@EnableMyBatisRepositories
+@MapperScan("com.repository")
 public class MyBatisConfig {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyBatisConfig.class);

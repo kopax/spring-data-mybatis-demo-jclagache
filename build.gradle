@@ -77,6 +77,9 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
     // includes a Java annotation processor which is invoked as your project is compiled
     optional("org.springframework.boot:spring-boot-configuration-processor")
+
+    // data // TODO : used for tutorial spring react, if we decide not to keep it please remove this package
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
 }
 
 
