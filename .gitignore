@@ -1,0 +1,4 @@
+.gradle/
+.idea/
+.jdk8
+.mvn

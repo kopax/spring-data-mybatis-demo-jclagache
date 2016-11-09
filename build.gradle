@@ -1,0 +1,90 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/plugins-release' }
+
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE')
+// tag::build[]
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+// end::build[]
+        classpath('org.springframework.build.gradle:propdeps-plugin:0.0.7')
+
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+// tag::plugin[]
+apply plugin: 'docker'
+// end::plugin[]
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+// This is used as the docker image prefix (org)
+group = 'gregturn'
+
+jar {
+    baseName = 'gs-spring-boot-docker'
+    version =  '0.1.0'
+}
+
+// tag::task[]
+task buildDocker(type: Docker, dependsOn: build) {
+  push = true
+  applicationName = jar.baseName
+  dockerfile = file('src/main/docker/Dockerfile')
+  doFirst {
+    copy {
+      from jar
+      into stageDir
+    }
+  }
+}
+// end::task[]
+
+repositories {
+    mavenCentral()
+    maven { url 'http://repo.spring.io/plugins-release' }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    // Apache utils
+    compile('org.apache.commons:commons-lang3:3.4')
+    compile("org.apache.directory.server:apacheds-server-jndi:1.5.5")
+    // Used for Date manipulation java
+    compile("joda-time:joda-time")
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1')
+    // ---------------------
+    // ---DATABASE----------
+    // ---------------------
+    // Used for MariaDB connection
+    compile("org.mariadb.jdbc:mariadb-java-client:1.5.2")
+    // Used for Java/MariaDB ORM
+    compile("org.mybatis:mybatis:3.4.1")
+    compile("org.mybatis:mybatis-spring:1.3.0")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    // includes a Java annotation processor which is invoked as your project is compiled
+    optional("org.springframework.boot:spring-boot-configuration-processor")
+}
+
+
+// ensure that resources are processed before code is compiled.
+// Without this directive any additional-spring-configuration-metadata.json files will not be processed.
+compileJava.dependsOn(processResources)
+
+// Wrapper configuration
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

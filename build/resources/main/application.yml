@@ -1,0 +1,34 @@
+server:
+  port: 8090
+
+#TODO: figure out why I need this here and in bootstrap.yml
+spring:
+  application:
+    name: testLatticeApp
+  datasource:
+    version: 0.0.5
+    url: jdbc:mariadb://dev:31740/DATA_V1?autoReconnect=true&useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=UTF-8
+    username: backoffice
+    password: backoffice
+    driver-class-name: org.mariadb.jdbc.Driver
+    minIdle: 0
+    maxIdle: 10
+    maxActive: 50
+    maxWait: 6000
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    timeBetweenEvictionRunsMillis: 1800000
+    numTestsPerEvictionRun: 50
+    minEvictableIdleTimeMillis: 10
+    testWhileIdle: true
+
+ribbon:
+  ServerListRefreshInterval: 1000
+
+endpoints:
+  health:
+    sensitive: false
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
