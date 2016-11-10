@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@SpringBootApplication
-@EnableMyBatisRepositories
-@RestController
-public class Application {
+    @SpringBootApplication
+    @EnableMyBatisRepositories
+    @RestController
+    public class Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        public static void main(String[] args) {
+            SpringApplication.run(Application.class, args);
+        }
+
+        @Autowired
+        private ManagerRepository managerRepository;
+
+        @RequestMapping("/")
+        public String home() {
+            return "Hello Docker World";
+        }
+
+        @RequestMapping("/manager")
+        public ResponseEntity<List<Manager>> dataSource(){
+            Manager manager = managerRepository.findOne(1);
+            List<Manager> managerList = managerRepository.findAll();
+            return new ResponseEntity<List<Manager>>(managerList, HttpStatus.OK);
+        }
+
     }
-
-    @Autowired
-    private ManagerRepository managerRepository;
-
-    @RequestMapping("/")
-    public String home() {
-        return "Hello Docker World";
-    }
-
-    @RequestMapping("/manager")
-    public ResponseEntity<List<Manager>> dataSource(){
-        Manager manager = managerRepository.findOne(1);
-        List<Manager> managerList = managerRepository.findAll();
-        return new ResponseEntity<List<Manager>>(managerList, HttpStatus.OK);
-    }
-
-}

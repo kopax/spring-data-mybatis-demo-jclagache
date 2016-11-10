@@ -9,6 +9,7 @@ public class MyBatisConfig {
 //	public MyBatisRepositoryFactoryBean entityManagerFactory() {
 //		MyBatisRepositoryFactoryBean factory = new MyBatisRepositoryFactoryBean();
 //		factory.setRepositoryInterface(MyBatisRepository.class);
+//		EntityInformation entity = factory.getEntityInformation();
 //		return factory;
 //	}
 
